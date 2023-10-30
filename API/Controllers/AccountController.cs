@@ -22,7 +22,7 @@ namespace API.Controllers
         [HttpPost("register")] // POST api/account/register
         public async Task<ActionResult<UserDto>> Register (RegisterDto registerDto)
         {
-            if(await UserExists(registerDto.Username))
+            if(await UserExists(registerDto.Username.ToLower()))
             {
                 return BadRequest("Username is taken");
             }
